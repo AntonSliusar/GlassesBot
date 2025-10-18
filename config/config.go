@@ -23,10 +23,10 @@ func LoadConfig() (*DBConfig, error) {
 	}
 
 	return &DBConfig{
-		Host:     os.Getenv("DB_HOSt"),
+		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),
 		User:     os.Getenv("DB_USER"),
-		Password: os.Getenv("DB_PASSWORd"),
+		Password: os.Getenv("DB_PASSWORD"),
 		DBName:   os.Getenv("DB_NAME"),
 		SSLMode:  os.Getenv("DB_SSLMODE"),
 	}, nil
