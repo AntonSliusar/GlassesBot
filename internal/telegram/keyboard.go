@@ -2,7 +2,6 @@ package telegram
 
 import (
 	"fmt"
-	"glassesbot/internal/domain"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -46,11 +45,14 @@ func lensesKeyboard() tgbotapi.InlineKeyboardMarkup {
 }
 
 func orderActionKeyboard(orderID int, status string) tgbotapi.InlineKeyboardMarkup {
-	actionButton := tgbotapi.NewInlineKeyboardButtonData(
-		"Продовжити",
-		fmt.Sprintf("resume_%d", orderID),
-	)
-	if status == domain.STATUS_IN_WORK {
+	var actionButton tgbotapi.InlineKeyboardButton
+	switch status {
+	case "paused":
+		actionButton = tgbotapi.NewInlineKeyboardButtonData(
+			"Продовжити",
+			fmt.Sprintf("resume_%d", orderID),
+		)
+	case "inWork":
 		actionButton = tgbotapi.NewInlineKeyboardButtonData(
 			"Пауза",
 			fmt.Sprintf("pause_%d", orderID),
@@ -61,7 +63,7 @@ func orderActionKeyboard(orderID int, status string) tgbotapi.InlineKeyboardMark
 		tgbotapi.NewInlineKeyboardRow(
 			actionButton,
 			tgbotapi.NewInlineKeyboardButtonData(
-				"Завершити", fmt.Sprintf("finisg_%d", orderID),
+				"Завершити", fmt.Sprintf("finish_%d", orderID),
 			),
 		),
 	)

@@ -54,6 +54,8 @@ func (b *Bot) handleActiveOrders(callback *tgbotapi.CallbackQuery) {
 			order.Frame, order.Lenses, order.Status,
 		)
 		msg := tgbotapi.NewMessage(callback.Message.Chat.ID, text)
+		fmt.Println(order.Status)
+		fmt.Println(order.Frame)
 		keyboard := orderActionKeyboard(int(id), order.Status)
 		msg.ReplyMarkup = &keyboard
 		b.bot.Send(msg)
@@ -92,7 +94,7 @@ func (b *Bot) handleLensesSelection(callback *tgbotapi.CallbackQuery) {
 		b.SendMessage(chatID, "Помилка: створіть нове замовлення")
 	}
 
-	b.orderManager.Orders[orderState.OrderId].Lenses = callback.Data
+	b.orderManager.Orders[orderState.OrderId].Lenses = domain.GetLensesByID(callback.Data)
 	msg := tgbotapi.NewEditMessageText(
 		callback.Message.Chat.ID,
 		callback.Message.MessageID,
@@ -106,6 +108,7 @@ func (b *Bot) handleLensesSelection(callback *tgbotapi.CallbackQuery) {
 
 func (b *Bot) handlePauseAction(callback *tgbotapi.CallbackQuery) {
 	orderID, err := strconv.ParseInt(strings.TrimPrefix(callback.Data, "pause_"), 10, 64)
+	
 	if err != nil {
 		b.SendMessage(callback.Message.Chat.ID, "Невірний ID замовлення")
 		return
@@ -141,6 +144,21 @@ func (b *Bot) handleResumeAction(callback *tgbotapi.CallbackQuery) {
 }
 
 func (b *Bot) handleFinishAction(callback *tgbotapi.CallbackQuery) {
-	//TODO завершення замовлення і збереження в БД
+	orderID, err := strconv.ParseInt(strings.TrimPrefix(callback.Data, "finish_"), 10, 64)
+	if err != nil {
+		b.SendMessage(callback.Message.Chat.ID, "Невірний ID замовлення")
+		return
+	}
+fmt.Println(b.orderManager.Orders[orderID])
+
+	b.orderManager.FinishOrder(orderID)
+	msg := tgbotapi.NewEditMessageText(
+		callback.Message.Chat.ID,
+		callback.Message.MessageID,
+		"Замовлення завершено",
+	)
+	keyboard := mainMenuKeyboard()
+	msg.ReplyMarkup = &keyboard
+	b.bot.Send(msg)
 }
 

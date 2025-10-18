@@ -6,7 +6,7 @@ import (
 
 const (
 	STATUS_IN_WORK = "inWork"
-	STATUS_PAUSER = "paused"
+	STATUS_PAUSE = "paused"
 )
 
 type Order struct {
@@ -25,11 +25,11 @@ func NewOrder() *Order {
 		Date:    time.Now(),
 		WorkingTime: 0,
 		LastStartTime: time.Now(),
-		Status: "InWork",
+		Status: "inWork",
 	}
 }	
 func (o *Order) Pause() {
-	o.Status = STATUS_PAUSER
+	o.Status = STATUS_PAUSE
 	o.TotalWorkinTime()
 }
 
