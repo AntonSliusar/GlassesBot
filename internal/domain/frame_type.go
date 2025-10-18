@@ -21,5 +21,3 @@ func GetFrameByID(code string) string {
 	}
 	return ""
 }
-
-// TODO додати функцію яка буду створювати і заповювати масив FrameTypes з окремого файлу (json, yaml...)
