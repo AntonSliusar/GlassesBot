@@ -1,0 +1,13 @@
+services:
+  glasses-postgres:
+    image: postgres
+    container_name: glasses-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - glasses-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  glasses-postgres-data:
