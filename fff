@@ -1,0 +1,66 @@
+[33mcommit 428f92e18b1cd23b0008219f390273775c6a53fd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:49:50 2025 +0300
+
+    main file
+
+[33mcommit b829ea756607ca6608a8443b5f5aec26eb68de9a[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:45:48 2025 +0300
+
+    Create migrations for database and Docker compose file
+
+[33mcommit 2d6f460e50b3cc08fc9f7c17a3a79866aceb4583[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:45:06 2025 +0300
+
+    .
+
+[33mcommit 3af13c09af95a818561478b8ddcbdf4447f40cf5[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:44:53 2025 +0300
+
+    .
+
+[33mcommit 7e89aa9fb442a1e53cd5509ffcc14c1be9a8fca7[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:44:11 2025 +0300
+
+    fix mistakes in order repo and order manager
+
+[33mcommit 3ca2c077ef372f1535ba2a31603907bffa8b602b[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:43:36 2025 +0300
+
+    Create Frames and Lenses types
+
+[33mcommit 3ea91dfbc37046e3e378afe0d90fbabf51889f23[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Sat Oct 18 15:42:51 2025 +0300
+
+    Add handlefinishinAction
+    Fix mistatkes in keyboard and order(domain)
+
+[33mcommit a5a26e3b4fd0fa94f5df194183d74c599ec589df[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Mon Oct 13 20:16:10 2025 +0300
+
+    Implement order management and frame selection functionality in Telegram bot
+
+[33mcommit 83b28b6e77e1427fe92d00fd72b76bb6133a7311[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Mon Oct 13 20:14:43 2025 +0300
+
+    Add configuration loading and order management functionality
+
+[33mcommit dd2fb00d6c1d27d5f5e3aa576e8ea81d64942d4a[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Mon Oct 13 20:13:18 2025 +0300
+
+    Add PostgreSQL connection and Order repository implementation
+
+[33mcommit 2360f8b5929f1dbff6a3b5bd717299a59a48c637[m
+Author: AntonSliusar <uk17091@gmail.com>
+Date:   Mon Oct 13 20:12:13 2025 +0300
+
+    Implement Order management with Pause and Resume functionality

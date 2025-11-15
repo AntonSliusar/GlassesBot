@@ -15,25 +15,29 @@ import (
 
 func main() {
 
-	//TODO: telegram bot functionality,  cover with tests, Docker file
-
+	//TODO:cover with tests
+	fmt.Println("Bot is starting...")
+	
 	config, err := config.LoadConfig()
 	if err != nil {
 		log.Fatalf("Error loading config: %v", err)
 	}
+	fmt.Println("Config loaded successfully.")
+
 
 	dbConn, err := db.NewConnection(config)
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
 	}
 	defer dbConn.Close()
+	fmt.Println("Database connection established.")
 
 
 	err = db.Migrate(dbConn)
 	if err != nil {
 		fmt.Println(err)
 	}
-
+	
 
 	orderRepo := repository.NewOrderRepository(dbConn)
 	orderManager := service.NewOrderManager(orderRepo)
